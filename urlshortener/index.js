@@ -54,21 +54,6 @@ app.listen(port, function () {
 let urls = new Map();
 let shortUrlIndex = 1000;
 
-function getHost(url) {
-  let firstIndex;
-  let lastIndex;
-
-  for (let i = 0; i < url.length; i++) {
-    if (url[i] === "/" && url[i - 1] === "/") {
-      firstIndex = i + 1;
-    } else if (firstIndex && url[i] === "/") {
-      lastIndex = i;
-    }
-  }
-
-  return url.slice(firstIndex, lastIndex);
-}
-
 function cacheShortUrl(url) {
   urls.set(`${++shortUrlIndex}`, url);
   return shortUrlIndex;
